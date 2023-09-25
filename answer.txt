@@ -1,0 +1,27 @@
+Interview answter
+
+1. Protocol layer attack - HTTP request smuggling 
+
+
+2. XSS attack: Cross-Site Scripting. 
+
+Filter special characters
+One of the ways to avoid XSS is to filter the content provided by the user (such as the script tag above).
+
+Specify the type using HTTP headers
+w.Header().Set("Content-Type","text/javascript")
+This allows the browser to parse the javascript code instead of html output
+
+
+3. CSRF（Cross-site request forgery）
+
+Synchronizer Tokens: Hide a randomly changing csrf_token in the form. The csrf_token is submitted to the background for verification. If the verification passes, the operation can continue.
+
+Hash encrypted cookie csrf_token
+
+
+4. Forge X-Forwarded-For
+
+Configure on the Nginx reverse proxy server directly facing the outside world:
+proxy_set_header X-Forwarded-For $remote_addr;
+In the business code, use the getClientIp() method above to obtain the leftmost IP address of X-Forwarded-For, which is the real address.
